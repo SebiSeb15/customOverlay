@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "customoverlay",
+  "version": "${version}",
+  "name": "customOverlay",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MPL-2.0",
+  "icon": "assets/customoverlay/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "seb.sebiseb.customoverlay.client.CustomoverlayClient"
+    ],
+    "main": [
+      "seb.sebiseb.customoverlay.Customoverlay"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}

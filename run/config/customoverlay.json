@@ -1,0 +1,104 @@
+{
+  "lines": [
+    {
+      "id": "line_9",
+      "enabled": true,
+      "template": "{fps} FPS {x} / {y} / {z}",
+      "x": 10,
+      "y": 90,
+      "color": -1,
+      "scale": 1.0,
+      "shadow": true
+    },
+    {
+      "id": "line_10",
+      "enabled": true,
+      "template": "{other_dim}: {conv_x} / {conv_z}",
+      "x": 10,
+      "y": 100,
+      "color": -1,
+      "scale": 1.0,
+      "shadow": true
+    },
+    {
+      "id": "fps",
+      "enabled": true,
+      "template": "FPS: {fps}",
+      "x": 10,
+      "y": 10,
+      "color": -466414,
+      "scale": 1.0,
+      "shadow": true
+    },
+    {
+      "id": "coords",
+      "enabled": true,
+      "template": "XYZ: {x} / {y} / {z}",
+      "x": 10,
+      "y": 20,
+      "color": -1,
+      "scale": 1.0,
+      "shadow": true
+    },
+    {
+      "id": "nether_conv",
+      "enabled": true,
+      "template": "Chunk: {chunk_x}/{chunk_z} local: {local_x}/{local_z}",
+      "x": 10,
+      "y": 70,
+      "color": -1,
+      "scale": 1.0,
+      "shadow": true
+    },
+    {
+      "id": "dim_conv",
+      "enabled": true,
+      "template": "{other_dim}: {conv_x} / {conv_z}",
+      "x": 10,
+      "y": 80,
+      "color": -1,
+      "scale": 1.0,
+      "shadow": true
+    },
+    {
+      "id": "facing",
+      "enabled": true,
+      "template": "Facing: {facing}",
+      "x": 10,
+      "y": 30,
+      "color": -1,
+      "scale": 1.0,
+      "shadow": true
+    },
+    {
+      "id": "biome",
+      "enabled": true,
+      "template": "Biome: {biome}",
+      "x": 10,
+      "y": 40,
+      "color": -1,
+      "scale": 1.0,
+      "shadow": true
+    },
+    {
+      "id": "time",
+      "enabled": true,
+      "template": "Time: {time}",
+      "x": 10,
+      "y": 60,
+      "color": -1,
+      "scale": 1.0,
+      "shadow": true
+    },
+    {
+      "id": "dimension",
+      "enabled": false,
+      "template": "Dimension: {dimension}",
+      "x": 10,
+      "y": 50,
+      "color": -1,
+      "scale": 1.0,
+      "shadow": true
+    }
+  ]
+}
