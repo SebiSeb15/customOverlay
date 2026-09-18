@@ -19,14 +19,13 @@ public class HudConfig {
 
     public static HudConfig createDefault() {
         HudConfig config = new HudConfig();
-        config.lines.add(new HudLine("fps", "FPS: {fps}", 10, 10));
-        config.lines.add(new HudLine("coords", "XYZ: {x} / {y} / {z}", 10, 20));
-        config.lines.add(new HudLine("facing", "Facing: {facing}", 10, 30));
-        config.lines.add(new HudLine("biome", "Biome: {biome}", 10, 40));
-        config.lines.add(new HudLine("dimension", "Dimension: {dimension}", 10, 50));
-        config.lines.add(new HudLine("time", "Time: {time}", 10, 60));
-        config.lines.add(new HudLine("nether_conv", "Chunk: {chunk_x}/{chunk_z} local: {local_x}/{local_z}", 10, 70));
-        config.lines.add(new HudLine("dim_conv", "{other_dim}: {conv_x} / {conv_z}", 10, 80));
+        config.lines.add(new HudLine("fps", "FPS: {fps}", 2, 0));
+        config.lines.add(new HudLine("coords", "XYZ: {x} / {y} / {z}", 2, 0));        config.lines.add(new HudLine("facing", "Facing: {facing}", 2, 0));
+        config.lines.add(new HudLine("biome", "Biome: {biome}", 2, 0));
+        config.lines.add(new HudLine("dimension", "Dimension: {dimension}", 2, 0));
+        config.lines.add(new HudLine("time", "Time: {time}", 2, 0));
+        config.lines.add(new HudLine("chunk_relative", "Chunk: {chunk_x}/{chunk_z} local: {local_x}/{local_z}", 2, 0));
+        config.lines.add(new HudLine("dim_conv", "{other_dim}: {conv_x} / {conv_z}", 2, 0));
         return config;
     }
 

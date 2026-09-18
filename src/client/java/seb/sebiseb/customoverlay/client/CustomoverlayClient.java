@@ -32,21 +32,27 @@ public class CustomoverlayClient implements ClientModInitializer {
                 (graphics, tickCounter) -> {
                     Minecraft client = Minecraft.getInstance();
 
+                    int currentY = 2; // marge du haut
+
                     for (HudLine line : CONFIG.lines) {
-                        if (!line.enabled) continue;
+                        if (!line.enabled) continue; // ligne désactivée = complètement ignorée, pas de trou
 
                         String text = PlaceholderResolver.resolve(line.template, client);
+                        int lineHeight = (int) (client.font.lineHeight * line.scale) + 2; // hauteur + petit espacement
+                        int drawY = currentY + line.y; // line.y = espace additionnel optionnel avant cette ligne
 
                         if (line.scale != 1.0f) {
                             graphics.pose().pushMatrix();
                             graphics.pose().scale(line.scale, line.scale);
                             int scaledX = (int) (line.x / line.scale);
-                            int scaledY = (int) (line.y / line.scale);
+                            int scaledY = (int) (drawY / line.scale);
                             graphics.text(client.font, text, scaledX, scaledY, line.color, line.shadow);
                             graphics.pose().popMatrix();
                         } else {
-                            graphics.text(client.font, text, line.x, line.y, line.color, line.shadow);
+                            graphics.text(client.font, text, line.x, drawY, line.color, line.shadow);
                         }
+
+                        currentY = drawY + lineHeight;
                     }
                 }
         );
