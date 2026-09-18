@@ -1,3 +1,0 @@
-/locate structure minecraft:shipwreck
-/tp @s -1120 ~ -896
-/tp 800 ~ 64
