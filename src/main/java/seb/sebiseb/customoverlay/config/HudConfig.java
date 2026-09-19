@@ -26,6 +26,7 @@ public class HudConfig {
         config.lines.add(new HudLine("time", "Time: {time}", 2, 0));
         config.lines.add(new HudLine("chunk_relative", "Chunk: {chunk_x}/{chunk_z} local: {local_x}/{local_z}", 2, 0));
         config.lines.add(new HudLine("dim_conv", "{other_dim}: {conv_x} / {conv_z}", 2, 0));
+        config.lines.add(new HudLine("entities", "E: {e_rendered}/{e_total}", 2, 0));
         return config;
     }
 

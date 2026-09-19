@@ -7,9 +7,16 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
 public class PlaceholderResolver {
 
     public static String resolve(String template, Minecraft client) {
+
+        final Pattern ENTITY_PATTERN = Pattern.compile("(\\d+)\\s*/\\s*(\\d+)");
         String result = template;
 
         result = result.replace("{fps}", String.valueOf(client.getFps()));
@@ -35,16 +42,18 @@ public class PlaceholderResolver {
                 result = result.replace("{biome}", biomeName);
 
                 ResourceKey<Level> dimKey = client.level.dimension();
-                int convX, convZ;
+                double exactX = client.player.getX();
+                double exactZ = client.player.getZ();
+                double convX, convZ;
                 String otherDimName;
 
                 if (dimKey.equals(Level.OVERWORLD)) {
-                    convX = pos.getX() / 8;
-                    convZ = pos.getZ() / 8;
+                    convX = exactX / 8.0;
+                    convZ = exactZ / 8.0;
                     otherDimName = "nether";
                 } else if (dimKey.equals(Level.NETHER)) {
-                    convX = pos.getX() * 8;
-                    convZ = pos.getZ() * 8;
+                    convX = exactX * 8.0;
+                    convZ = exactZ * 8.0;
                     otherDimName = "overworld";
                 } else {
                     convX = 0;
@@ -53,8 +62,8 @@ public class PlaceholderResolver {
                 }
 
                 result = result.replace("{other_dim}", otherDimName);
-                result = result.replace("{conv_x}", String.valueOf(convX));
-                result = result.replace("{conv_z}", String.valueOf(convZ));
+                result = result.replace("{conv_x}", String.format(Locale.ROOT, "%.2f", convX));
+                result = result.replace("{conv_z}", String.format(Locale.ROOT, "%.2f", convZ));
             } else {
                 result = result.replace("{biome}", "?");
             }
@@ -69,8 +78,19 @@ public class PlaceholderResolver {
         if (client.level != null) {
             result = result.replace("{dimension}", client.level.dimension().identifier().getPath());
             result = result.replace("{time}", String.valueOf(Math.floorMod(client.level.getDefaultClockTime(), 24000L)));
+            String stats = client.levelExtractor.entityStatistics();
+            String rendered = "?", total = "?";
+            if (stats != null) {
+                Matcher m = ENTITY_PATTERN.matcher(stats);
+                if (m.find()) {
+                    rendered = m.group(1);
+                    total = m.group(2);
+                }
+            }
+            result = result.replace("{e_rendered}", rendered);
+            result = result.replace("{e_total}", total);
         } else {
-            result = result.replace("{dimension}", "?").replace("{time}", "?");
+            result = result.replace("{dimension}", "?").replace("{time}", "?").replace("{e_rendered}", "?").replace("{e_total}", "?");
         }
 
         return result;
