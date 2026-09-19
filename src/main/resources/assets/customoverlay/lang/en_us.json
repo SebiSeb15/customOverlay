@@ -1,4 +1,5 @@
 {
   "key.category.customoverlay.main_category": "Custom Overlay",
-  "key.customoverlay.open_config": "Open Config Screen"
+  "key.customoverlay.open_config": "Open Config Screen",
+  "key.customoverlay.toggle_overlay": "Toggle overlay"
 }

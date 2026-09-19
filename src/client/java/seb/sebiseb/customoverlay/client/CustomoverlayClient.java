@@ -4,6 +4,7 @@ package seb.sebiseb.customoverlay.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keymapping.v1.KeyMappingHelper;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.HudElementRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.hud.VanillaHudElements;
@@ -19,6 +20,7 @@ import java.nio.file.Path;
 public class CustomoverlayClient implements ClientModInitializer {
 
     public static HudConfig CONFIG;
+    public static boolean overlayVisible = true;
     private static final Path CONFIG_PATH =
             FabricLoader.getInstance().getConfigDir().resolve("customoverlay.json");
 
@@ -30,6 +32,7 @@ public class CustomoverlayClient implements ClientModInitializer {
                 VanillaHudElements.CHAT,
                 Identifier.fromNamespaceAndPath("customoverlay", "main_overlay"),
                 (graphics, tickCounter) -> {
+                    if (!overlayVisible) return;
                     Minecraft client = Minecraft.getInstance();
 
                     int currentY = 2;
@@ -68,14 +71,31 @@ public class CustomoverlayClient implements ClientModInitializer {
                         CATEGORY
                 )
         );
+        KeyMapping toggleOverlayKey = KeyMappingHelper.registerKeyMapping(
+                new KeyMapping(
+                        "key.customoverlay.toggle_overlay",
+                        InputConstants.Type.KEYSYM,
+                        InputConstants.KEY_F4,
+                        CATEGORY
+                )
+        );
 
         net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.END_CLIENT_TICK.register(client -> {
             while (openConfigKey.consumeClick()) {
                 client.setScreenAndShow(new seb.sebiseb.customoverlay.client.gui.CustomOverlayConfigScreen(client.gui.screen()));
             }
         });
-
+        ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            while (openConfigKey.consumeClick()) {
+                client.setScreenAndShow(new seb.sebiseb.customoverlay.client.gui.CustomOverlayConfigScreen(client.gui.screen()));
+            }
+            while (toggleOverlayKey.consumeClick()) {
+                overlayVisible = !overlayVisible;
+            }
+        });
     }
+
+
 
     public static void saveConfig() {
         CONFIG.save(CONFIG_PATH);
