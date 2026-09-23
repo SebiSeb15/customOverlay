@@ -66,7 +66,7 @@ public class CustomoverlayClient implements ClientModInitializer {
         KeyMapping openConfigKey = KeyMappingHelper.registerKeyMapping(
                 new KeyMapping(
                         "key.customoverlay.open_config",
-                        InputConstants.Type.KEYSYM,
+                        InputConstants.Type.KEYBOARD,
                         InputConstants.KEY_O,
                         CATEGORY
                 )
@@ -74,7 +74,7 @@ public class CustomoverlayClient implements ClientModInitializer {
         KeyMapping toggleOverlayKey = KeyMappingHelper.registerKeyMapping(
                 new KeyMapping(
                         "key.customoverlay.toggle_overlay",
-                        InputConstants.Type.KEYSYM,
+                        InputConstants.Type.KEYBOARD,
                         InputConstants.KEY_F4,
                         CATEGORY
                 )
