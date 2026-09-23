@@ -3,6 +3,7 @@
 > Un mod qui ajoute un overlay façon **F3** avec des informations et un format entièrement **customisables**.
 
 ![Minecraft](https://img.shields.io/badge/Minecraft-26.2-green)
+![Minecraft](https://img.shields.io/badge/Minecraft-26.3-green)
 ![Loader](https://img.shields.io/badge/loader-Fabric-orange)
 
 <img width="2560" height="1440" alt="capture d'écran du jeu" src="https://github.com/user-attachments/assets/432c1f0f-140c-4141-bee1-6213607f5a0f" />
@@ -30,7 +31,7 @@ toi-même le contenu et la mise en forme. Tu n'affiches que les informations qui
 
 | Élément            | Version        |
 | ------------------ | -------------- |
-| Minecraft          | 26.2   |
+| Minecraft          | 26.2, 26.3   |
 | Mod loader         | Fabric |
 | Java               | 25     |
 
